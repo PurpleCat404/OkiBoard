@@ -1,0 +1,21 @@
+class OKeyboard {
+    var Button A;
+
+    constructor OKeyboard new() 
+    {
+        let A = Button.new(Point.new(97, 135), 16, 16);
+        return this;
+    }
+
+    method void run () {
+        var Point a;
+        let a = A.LeftTopCorner();
+        do Screen.drawRectangle(a.X(), a.Y(), a.X() + A.Width(), a.Y() + A.Height());        
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

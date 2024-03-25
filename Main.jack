@@ -1,0 +1,9 @@
+class Main {
+    function void main () {
+        var OKeyboard okeyboard;
+        let okeyboard = OKeyboard.new();
+        do okeyboard.run();
+        do okeyboard.dispose();
+        return;
+    }
+}

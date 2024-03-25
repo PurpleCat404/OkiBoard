@@ -1,0 +1,25 @@
+class Button {
+   field int Height, Width;
+   field Point LeftTopCorner; 
+   field char Letter;
+
+   constructor Button new(Point corner, char letter, int height, int width) {
+    let Height = height;
+    let Width = width;
+    let LeftTopCorner = corner;
+    let Letter = letter;
+    return this;
+   }
+
+   method int Height() { return Height; }
+
+   method int Width() { return Width; }
+
+   method Point LeftTopCorner() { return LeftTopCorner; }
+
+
+   method void dispose() {
+    do Memory.deAlloc(this);
+    return;
+   }
+}
