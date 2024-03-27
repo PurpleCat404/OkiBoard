@@ -3,10 +3,10 @@ class Button {
    field Point LeftTopCorner; 
 
    constructor Button new(Point corner, int height, int width) {
-    let LeftTopCorner = corner;
-    let Height = height;
-    let Width = width;
-    return this;
+      let LeftTopCorner = corner;
+      let Height = height;
+      let Width = width;
+      return this;
    }
 
    method int Height() { return Height; }
@@ -15,9 +15,8 @@ class Button {
 
    method Point LeftTopCorner() { return LeftTopCorner; }
 
-
    method void dispose() {
-    do Memory.deAlloc(this);
-    return;
+      do Memory.deAlloc(this);
+      return;
    }
 }
