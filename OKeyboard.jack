@@ -1,21 +1,568 @@
 class OKeyboard {
+
+    field Button YO;
+    field Button ONE;
+    field Button TWO;
+    field Button THREE;
+    field Button FOUR;
+    field Button FIVE;
+    field Button SIX;
+    field Button SEVEN;
+    field Button EIGHT;
+    field Button NINE;
+    field Button ZERO;
+    field Button DASH;
+    field Button PLUS;
+
+
+    field Button Q;
+    field Button W;
+    field Button E;
+    field Button R;
+    field Button T;
+    field Button Y;
+    field Button U;
+    field Button I;
+    field Button O;
+    field Button P;
+    field Button RGHTSQRBRCKT;
+    field Button LFTSQRBRCKT;
+
+
+    field Button Z;
+    field Button X;
+    field Button C;
+    field Button V;
+    field Button B;
+    field Button N;
+    field Button M;
+    field Button COMMA;
+    field Button DOT;
+    field Button SLSH;
+    
+
     field Button A;
+    field Button S;
+    field Button D;
+    field Button F;
+    field Button G;
+    field Button H;
+    field Button J;
+    field Button K;
+    field Button L;
+    field Button JI;
+    field Button QU;
+    field Button BCSLSH;
+
+    field Point point;
+
+    method void drawFrame()
+    {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(43, 45, 457, 209);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(44, 46, 454, 206);
+        return;
+    }
+
+    method void drawButton(Button button)
+    {
+        let point = button.LeftTopCorner();
+        do Screen.setColor(true);
+        do Screen.drawRectangle(point.X(), point.Y(), point.X() + button.Width(), point.Y() + button.Height());
+        do Screen.setColor(false);
+        do Screen.drawRectangle(point.X() + 3, point.Y() + 3, point.X() + button.Width() - 3, point.Y() + button.Height() - 3);
+        return;
+    }
+
+    method void coverButton(Button button)
+    {
+        let point = button.LeftTopCorner();
+        do Screen.setColor(true);
+        do Screen.drawRectangle(point.X(), point.Y(), point.X() + button.Width(), point.Y() + button.Height());
+        return;
+    }
+
 
     constructor OKeyboard new() 
     {
+        var Point yoPoint;
+        var Point onePoint;
+        var Point twoPoint;
+        var Point threePoint;
+        var Point fourPoint;
+        var Point fivePoint;
+        var Point sixPoint;
+        var Point sevenPoint;
+        var Point eightPoint;
+        var Point ninePoint;
+        var Point zeroPoint;
+        var Point dashPoint;
+        var Point plusPoint;
+
+        var Point qPoint;
+        var Point wPoint;
+        var Point ePoint;
+        var Point rPoint;
+        var Point tPoint;
+        var Point yPoint;
+        var Point uPoint;
+        var Point iPoint;
+        var Point oPoint;
+        var Point pPoint;
+        var Point rghtSqrBrcktPoint;
+        var Point lftSqrBrcktPoint;
+
+        var Point zPoint;
+        var Point xPoint;
+        var Point cPoint;
+        var Point vPoint;
+        var Point bPoint;
+        var Point nPoint;
+        var Point mPoint;
+        var Point commaPoint;
+        var Point dotPoint;
+        var Point slshPoint;
+
         var Point aPoint;
+        var Point sPoint;
+        var Point dPoint;
+        var Point fPoint;
+        var Point gPoint;
+        var Point hPoint;
+        var Point jPoint;
+        var Point kPoint;
+        var Point lPoint;
+        var Point jiPoint;
+        var Point quPoint;        
+        var Point bcslshPoint;
+
+        let yoPoint = Point.new(58, 97);
+        let YO = Button.new(yoPoint, 16, 16);
+
+        let onePoint = Point.new(81, 97);
+        let ONE = Button.new(onePoint, 16, 16);
+
+        let twoPoint = Point.new(104, 97);
+        let TWO = Button.new(twoPoint, 16, 16);
+
+        let threePoint = Point.new(127, 97);
+        let THREE = Button.new(threePoint, 16, 16);
+
+        let fourPoint = Point.new(150, 97);
+        let FOUR = Button.new(fourPoint, 16, 16);
+
+        let fivePoint = Point.new(173, 97);
+        let FIVE = Button.new(fivePoint, 16, 16);
+
+        let sixPoint = Point.new(196, 97);
+        let SIX = Button.new(sixPoint, 16, 16);
+
+        let sevenPoint = Point.new(219, 97);
+        let SEVEN = Button.new(sevenPoint, 16, 16);
+
+        let eightPoint = Point.new(242, 97);
+        let EIGHT = Button.new(eightPoint, 16, 16);
+
+        let ninePoint = Point.new(265, 97);
+        let NINE = Button.new(ninePoint, 16, 16);
+
+        let zeroPoint = Point.new(288, 97);
+        let ZERO = Button.new(zeroPoint, 16, 16);
+
+        let dashPoint = Point.new(311, 97);
+        let DASH = Button.new(dashPoint, 16, 16);
+
+        let plusPoint = Point.new(334, 97);
+        let PLUS = Button.new(plusPoint, 16, 16);
+
+
+
+
+        let qPoint = Point.new(89, 116);
+        let Q = Button.new(qPoint, 16, 16);
+
+        let wPoint = Point.new(112, 116);
+        let W = Button.new(wPoint, 16, 16);
+
+        let ePoint = Point.new(135, 116);
+        let E = Button.new(ePoint, 16, 16);
+        
+        let rPoint = Point.new(158, 116);
+        let R = Button.new(rPoint, 16, 16);
+        
+        let tPoint = Point.new(181, 116);
+        let T = Button.new(tPoint, 16, 16);
+        
+        let yPoint = Point.new(204, 116);
+        let Y = Button.new(yPoint, 16, 16);
+        
+        let uPoint = Point.new(227, 116);
+        let U = Button.new(uPoint, 16, 16);
+        
+        let iPoint = Point.new(250, 116);
+        let I = Button.new(iPoint, 16, 16);
+        
+        let oPoint = Point.new(273, 116);
+        let O = Button.new(oPoint, 16, 16);
+        
+        let pPoint = Point.new(296, 116);
+        let P = Button.new(pPoint, 16, 16);
+        
+        let rghtSqrBrcktPoint = Point.new(319, 116);
+        let RGHTSQRBRCKT = Button.new(rghtSqrBrcktPoint, 16, 16);
+        
+        let lftSqrBrcktPoint = Point.new(342, 116);
+        let LFTSQRBRCKT = Button.new(lftSqrBrcktPoint, 16, 16);
+        
+
+
+
+
+        let zPoint = Point.new(105, 154);
+        let Z = Button.new(zPoint, 16, 16);
+
+        let xPoint = Point.new(128, 154);
+        let X = Button.new(xPoint, 16, 16);
+
+        let cPoint = Point.new(151, 154);
+        let C = Button.new(cPoint, 16, 16);
+
+        let vPoint = Point.new(174, 154);
+        let V = Button.new(vPoint, 16, 16);
+
+        let bPoint = Point.new(197, 154);
+        let B = Button.new(bPoint, 16, 16);
+
+        let nPoint = Point.new(220, 154);
+        let N = Button.new(nPoint, 16, 16);
+
+        let mPoint = Point.new(243, 154);
+        let M = Button.new(mPoint, 16, 16);
+
+        let commaPoint = Point.new(266, 154);
+        let COMMA = Button.new(commaPoint, 16, 16);
+
+        let dotPoint = Point.new(289, 154);
+        let DOT = Button.new(dotPoint, 16, 16);
+
+        let slshPoint = Point.new(312, 154);
+        let SLSH = Button.new(slshPoint, 16, 16);
+
+
+
+
         let aPoint = Point.new(97, 135);
         let A = Button.new(aPoint, 16, 16);
+        
+        let sPoint = Point.new(120, 135);
+        let S = Button.new(sPoint, 16, 16);
+
+        let dPoint = Point.new(143, 135);
+        let D = Button.new(dPoint, 16, 16);
+
+        let fPoint = Point.new(166, 135);
+        let F = Button.new(fPoint, 16, 16);
+
+        let gPoint = Point.new(189, 135);
+        let G = Button.new(gPoint, 16, 16);
+
+        let hPoint = Point.new(212, 135);
+        let H = Button.new(hPoint, 16, 16);
+
+        let jPoint = Point.new(235, 135);
+        let J = Button.new(jPoint, 16, 16);
+
+        let kPoint = Point.new(258, 135);
+        let K = Button.new(kPoint, 16, 16);
+
+        let lPoint = Point.new(281, 135);
+        let L = Button.new(lPoint, 16, 16);
+
+        let jiPoint = Point.new(304, 135);
+        let JI = Button.new(jiPoint, 16, 16);
+
+        let quPoint = Point.new(327, 135);
+        let QU = Button.new(quPoint, 16, 16);
+
+        let bcslshPoint = Point.new(350, 135);
+        let BCSLSH = Button.new(bcslshPoint, 16, 16);
+
         return this;
     }
 
+
     method void run () {
-        var Point a;
-        let a = A.LeftTopCorner();
-        while(true)
+        var char key;
+
+        do drawFrame();
+
+        do drawButton(YO);
+        do drawButton(ONE);
+        do drawButton(TWO);
+        do drawButton(THREE);
+        do drawButton(FOUR);
+        do drawButton(FIVE);
+        do drawButton(SIX);
+        do drawButton(SEVEN);
+        do drawButton(EIGHT);
+        do drawButton(NINE);
+        do drawButton(ZERO);
+        do drawButton(DASH);
+        do drawButton(PLUS);
+
+        do drawButton(Q);
+        do drawButton(W);
+        do drawButton(E);
+        do drawButton(R);
+        do drawButton(T);
+        do drawButton(Y);
+        do drawButton(U);
+        do drawButton(I);
+        do drawButton(O);
+        do drawButton(P);
+        do drawButton(RGHTSQRBRCKT);
+        do drawButton(LFTSQRBRCKT);
+
+        do drawButton(Z);
+        do drawButton(X);
+        do drawButton(C);
+        do drawButton(V);
+        do drawButton(B);
+        do drawButton(N);
+        do drawButton(M);
+        do drawButton(COMMA);
+        do drawButton(DOT);
+        do drawButton(SLSH);
+
+        do drawButton(A);
+        do drawButton(S);
+        do drawButton(D);
+        do drawButton(F);
+        do drawButton(G);
+        do drawButton(H);
+        do drawButton(J);
+        do drawButton(K);
+        do drawButton(L);
+        do drawButton(JI);
+        do drawButton(QU);
+        do drawButton(BCSLSH);
+
+        do Screen.setColor(true);
+
+        while (true)
         {
-            do Screen.drawRectangle(a.X(), a.Y(), a.X() + A.Width(), a.Y() + A.Height());
-        }        
+            let key = Keyboard.keyPressed();
+
+            if (key = 96){
+                do coverButton(YO);
+            }
+
+            if (key = 48){
+                do coverButton(ZERO);
+            }
+            
+            if (key = 49){
+                do coverButton(ONE);
+            }
+
+            if (key = 50){
+                do coverButton(TWO);
+            }
+
+            if (key = 51){
+                do coverButton(THREE);
+            }
+
+            if (key = 52){
+                do coverButton(FOUR);
+            }
+
+            if (key = 53){
+                do coverButton(FIVE);
+            }
+
+            if (key = 54){
+                do coverButton(SIX);
+            }
+
+            if (key = 55){
+                do coverButton(SEVEN);
+            }
+
+            if (key = 56){
+                do coverButton(EIGHT);
+            }
+
+            if (key = 57){
+                do coverButton(NINE);
+            }
+
+            if (key = 45){
+                do coverButton(DASH);
+            }
+
+            if (key = 61){
+                do coverButton(PLUS);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            if (key = 81){
+                do coverButton(Q);
+            }
+            
+            if (key = 87){
+                do coverButton(W);
+            }
+
+            if (key = 69){
+                do coverButton(E);
+            }
+
+            if (key = 82){
+                do coverButton(R);
+            }
+
+            if (key = 84){
+                do coverButton(T);
+            }
+
+            if (key = 89){
+                do coverButton(Y);
+            }
+
+            if (key = 85){
+                do coverButton(U);
+            }
+
+            if (key = 73){
+                do coverButton(I);
+            }
+
+            if (key = 79){
+                do coverButton(O);
+            }
+
+            if (key = 80){
+                do coverButton(P);
+            }
+
+            if (key = 91){
+                do coverButton(RGHTSQRBRCKT);
+            }
+
+            if (key = 93){
+                do coverButton(LFTSQRBRCKT);
+            }
+
+
+
+
+            if (key = 90){
+                do coverButton(Z);
+            }
+
+            if (key = 88){
+                do coverButton(X);
+            }
+
+            if (key = 67){
+                do coverButton(C);
+            }
+
+            if (key = 86){
+                do coverButton(V);
+            }
+            
+            if (key = 66){
+                do coverButton(B);
+            }
+ 
+            if (key = 78){
+                do coverButton(N);
+            }
+ 
+            if (key = 77){
+                do coverButton(M);
+            }
+  
+            if (key = 44){
+                do coverButton(COMMA);
+            }
+ 
+            if (key = 46){
+                do coverButton(DOT);
+            }
+
+            if (key = 47){
+                do coverButton(SLSH);
+            }
+
+
+
+
+
+            if (key = 65){
+                do coverButton(A);
+            }
+
+            if (key = 83){
+                do coverButton(S);
+            }
+
+            if (key = 68){
+                do coverButton(D);
+            }
+
+            if (key = 70){
+                do coverButton(F);
+            }
+            
+            if (key = 71){
+                do coverButton(G);
+            }
+ 
+            if (key = 72){
+                do coverButton(H);
+            }
+ 
+            if (key = 74){
+                do coverButton(J);
+            }
+ 
+            if (key = 75){
+                do coverButton(K);
+            }
+ 
+            if (key = 76){
+                do coverButton(L);
+            }
+ 
+            if (key = 59){
+                do coverButton(JI);
+            }
+
+            if (key = 39){
+                do coverButton(QU);
+            }
+
+            if (key = 92){
+                do coverButton(BCSLSH);
+            }
+        }
+
         return;
     }
 
