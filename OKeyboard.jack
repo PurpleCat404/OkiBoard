@@ -1,99 +1,40 @@
 class OKeyboard {
 
-    field Button ESC;
-    field Button F1;
-    field Button F2;
-    field Button F3;
-    field Button F4;
-    field Button F5;
-    field Button F6;
-    field Button F7;
-    field Button F8;
-    field Button F9;
-    field Button F10;
-    field Button F11;
-    field Button F12;
+    field Button ESC; 
+    field Button F1; field Button F2; field Button F3; field Button F4;
+    field Button F5; field Button F6; field Button F7; field Button F8;
+    field Button F9; field Button F10; field Button F11; field Button F12;
 
-    field Button YO;
-    field Button ONE;
-    field Button TWO;
-    field Button THREE;
-    field Button FOUR;
-    field Button FIVE;
-    field Button SIX;
-    field Button SEVEN;
-    field Button EIGHT;
-    field Button NINE;
-    field Button ZERO;
-    field Button DASH;
-    field Button PLUS;
-    field Button BACKSPACE;
+    field Button YO; field Button ONE; field Button TWO; field Button THREE;
+    field Button FOUR; field Button FIVE; field Button SIX; field Button SEVEN;
+    field Button EIGHT; field Button NINE; field Button ZERO; field Button DASH;
+    field Button PLUS;  field Button BACKSPACE;
 
-    field Button TAB;
-    field Button Q;
-    field Button W;
-    field Button E;
-    field Button R;
-    field Button T;
-    field Button Y;
-    field Button U;
-    field Button I;
-    field Button O;
-    field Button P;
-    field Button RGHTSQRBRCKT;
-    field Button LFTSQRBRCKT;
-    field Button BCSLSH;
+    field Button TAB; field Button Q; field Button W; field Button E;
+    field Button R; field Button T; field Button Y; field Button U;
+    field Button I; field Button O; field Button P;
+    field Button RGHTSQRBRCKT; field Button LFTSQRBRCKT;  field Button BCSLSH;
 
-    field Button CAPS;
-    field Button A;
-    field Button S;
-    field Button D;
-    field Button F;
-    field Button G;
-    field Button H;
-    field Button J;
-    field Button K;
-    field Button L;
-    field Button JI;
-    field Button QU;
+    field Button CAPS; field Button A; field Button S; field Button D;
+    field Button F; field Button G; field Button H; field Button J;
+    field Button K; field Button L; field Button JI; field Button QU;
     field Button ENTER;
 
     field Button LSHIFT;
-    field Button Z;
-    field Button X;
-    field Button C;
-    field Button V;
-    field Button B;
-    field Button N;
-    field Button M;
-    field Button COMMA;
-    field Button DOT;
-    field Button SLSH;
-    field Button RSHIFT;
+    field Button Z; field Button X; field Button C; field Button V;
+    field Button B; field Button N; field Button M; field Button COMMA;
+    field Button DOT; field Button SLSH; field Button RSHIFT;
 
-    field Button LCTRL;
-    field Button WIN;
-    field Button LALT;
-    field Button SPACE;
-    field Button RALT;
-    field Button FN;
+    field Button LCTRL; field Button WIN; field Button LALT;
+    field Button SPACE; field Button RALT; field Button FN;
     field Button CAT; // THIS A CAT  THIS A CAT  THIS A CAT  THIS A CAT  THIS A CAT 
     field Button RCTRL;
 
-    field Button LEFT;
-    field Button DOWN;
-    field Button RIGHT;
-    field Button UP;
+    field Button LEFT; field Button DOWN; field Button RIGHT; field Button UP;
 
-    field Button PRINT;
-    field Button SCROLL;
-    field Button PAUSE;
-    field Button INSERT;
-    field Button HOME;
-    field Button PAGEUP;
-    field Button PAGEDOWN;
-    field Button DELETE;
-    field Button END;
+    field Button PRINT; field Button SCROLL; field Button PAUSE;
+    field Button INSERT; field Button HOME; field Button PAGEUP;
+    field Button PAGEDOWN; field Button DELETE; field Button END;
 
     field Point point;
 
@@ -129,99 +70,39 @@ class OKeyboard {
     constructor OKeyboard new() 
     {
         var Point escPoint;
-        var Point f1Point;
-        var Point f2Point;
-        var Point f3Point;
-        var Point f4Point;
-        var Point f5Point;
-        var Point f6Point;
-        var Point f7Point;
-        var Point f8Point;
-        var Point f9Point;
-        var Point f10Point;
-        var Point f11Point;
-        var Point f12Point;
+        var Point f1Point; var Point f2Point; var Point f3Point; var Point f4Point;
+        var Point f5Point; var Point f6Point; var Point f7Point; var Point f8Point;
+        var Point f9Point; var Point f10Point; var Point f11Point; var Point f12Point;
 
-        var Point yoPoint;
-        var Point onePoint;
-        var Point twoPoint;
-        var Point threePoint;
-        var Point fourPoint;
-        var Point fivePoint;
-        var Point sixPoint;
-        var Point sevenPoint;
-        var Point eightPoint;
-        var Point ninePoint;
-        var Point zeroPoint;
-        var Point dashPoint;
-        var Point plusPoint;
-        var Point backspacePoint;
+        var Point yoPoint; var Point onePoint; var Point twoPoint; var Point threePoint;
+        var Point fourPoint; var Point fivePoint; var Point sixPoint; var Point sevenPoint; 
+        var Point eightPoint; var Point ninePoint; var Point zeroPoint; var Point dashPoint;
+        var Point plusPoint; var Point backspacePoint;
 
-        var Point tabPoint;
-        var Point qPoint;
-        var Point wPoint;
-        var Point ePoint;
-        var Point rPoint;
-        var Point tPoint;
-        var Point yPoint;
-        var Point uPoint;
-        var Point iPoint;
-        var Point oPoint;
-        var Point pPoint;
-        var Point rghtSqrBrcktPoint;
-        var Point lftSqrBrcktPoint;
-        var Point bcslshPoint;
+        var Point tabPoint; var Point qPoint; var Point wPoint; var Point ePoint;
+        var Point rPoint; var Point tPoint; var Point yPoint; var Point uPoint;
+        var Point iPoint; var Point oPoint; var Point pPoint;
+        var Point rghtSqrBrcktPoint; var Point lftSqrBrcktPoint; var Point bcslshPoint;
 
-        var Point capsPoint;
-        var Point aPoint;
-        var Point sPoint;
-        var Point dPoint;
-        var Point fPoint;
-        var Point gPoint;
-        var Point hPoint;
-        var Point jPoint;
-        var Point kPoint;
-        var Point lPoint;
-        var Point jiPoint;
-        var Point quPoint;   
-        var Point enterPoint;     
+        var Point capsPoint; var Point aPoint; var Point sPoint; var Point dPoint;
+        var Point fPoint; var Point gPoint; var Point hPoint; var Point jPoint;
+        var Point kPoint; var Point lPoint; var Point jiPoint;
+        var Point quPoint; var Point enterPoint;     
 
-        var Point lshiftPoint;
-        var Point zPoint;
-        var Point xPoint;
-        var Point cPoint;
-        var Point vPoint;
-        var Point bPoint;
-        var Point nPoint;
-        var Point mPoint;
-        var Point commaPoint;
-        var Point dotPoint;
-        var Point slshPoint;
-        var Point rshiftPoint;
+        var Point lshiftPoint; var Point zPoint; var Point xPoint; var Point cPoint;
+        var Point vPoint; var Point bPoint; var Point nPoint; var Point mPoint;
+        var Point commaPoint; var Point dotPoint; var Point slshPoint; var Point rshiftPoint;
 
-        var Point lctrlPoint;
-        var Point winPoint;
-        var Point laltPoint;
-        var Point spacePoint;
-        var Point raltPoint;
-        var Point fnPoint;
+        var Point lctrlPoint; var Point winPoint; var Point laltPoint;
+        var Point spacePoint; var Point raltPoint; var Point fnPoint;
         var Point catPoint; // THIS A CAT  THIS A CAT  THIS A CAT  THIS A CAT  THIS A CAT 
         var Point rctrlPoint;
 
-        var Point left;
-        var Point down;
-        var Point right;
-        var Point up;
+        var Point left; var Point down; var Point right; var Point up;
 
-        var Point print;
-        var Point scrool;
-        var Point pause;
-        var Point insert;
-        var Point home;
-        var Point pageUp;
-        var Point pageDown;
-        var Point delete;
-        var Point end;
+        var Point print; var Point scrool; var Point pause;
+        var Point insert; var Point home; var Point pageUp;
+        var Point pageDown; var Point delete; var Point end;
 
 
         let escPoint = Point.new(59, 63);
@@ -508,11 +389,8 @@ class OKeyboard {
         return this;
     }
 
-
-    method void run () 
+    method void drawKeyboard()
     {
-        var char key;
-
         do drawFrame();
 
         do drawButton(ESC);
@@ -610,7 +488,16 @@ class OKeyboard {
         do drawButton(DELETE);
         do drawButton(END);
 
+        return;
+    }
+
+    method void run () 
+    {
+        var char key;        
+
         do Screen.setColor(true);
+
+        do drawKeyboard();
 
         while (true)
         {
@@ -630,7 +517,6 @@ class OKeyboard {
             if (key = 151) { do coverButton(F11); }
             if (key = 152) { do coverButton(F12); }
 
-
             if (key = 96){ do coverButton(YO); }
             if (key = 48){ do coverButton(ZERO); }
             if (key = 49){ do coverButton(ONE); }
@@ -645,7 +531,6 @@ class OKeyboard {
             if (key = 45){ do coverButton(DASH); }
             if (key = 61){ do coverButton(PLUS); }
 
-
             if (key = 81){ do coverButton(Q); }
             if (key = 87){ do coverButton(W); }
             if (key = 69){ do coverButton(E); }
@@ -658,7 +543,6 @@ class OKeyboard {
             if (key = 80){ do coverButton(P); }
             if (key = 91){ do coverButton(RGHTSQRBRCKT); }
             if (key = 93){ do coverButton(LFTSQRBRCKT); }
-
 
             if (key = 65){ do coverButton(A); }
             if (key = 83){ do coverButton(S); }
@@ -673,7 +557,6 @@ class OKeyboard {
             if (key = 39){ do coverButton(QU); }
             if (key = 92){ do coverButton(BCSLSH); }
 
-
             if (key = 90){ do coverButton(Z); }
             if (key = 88){ do coverButton(X); }
             if (key = 67){ do coverButton(C); }
@@ -685,11 +568,9 @@ class OKeyboard {
             if (key = 46){ do coverButton(DOT); }
             if (key = 47){ do coverButton(SLSH); }
 
-
             if (key = 32){ do coverButton(SPACE); } 
             if (key = 128){ do coverButton(ENTER); } 
             if (key = 129){ do coverButton(BACKSPACE); }
-
 
             if (key = 130){ do coverButton(LEFT); }
             if (key = 131){ do coverButton(UP); }
