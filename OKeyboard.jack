@@ -38,6 +38,8 @@ class OKeyboard {
 
     field Point point;
 
+    field int memAddress;
+
     method void drawFrame()
     {
         do Screen.setColor(true);
@@ -491,6 +493,26 @@ class OKeyboard {
         return;
     }
 
+    method void drawEasterEggs()
+    {
+        do Screen.setColor(true);
+        do Screen.drawLine(181, 187, 209, 187);
+
+        //let memAddress = 16384 + 2071;
+        //do Memory.poke(memAddress, 30583);
+        //do Memory.poke(memAddress +32, 5393);
+        //do Memory.poke(memAddress +64, 5489);
+        //do Memory.poke(memAddress +96, 5393);
+        //do Memory.poke(memAddress +128, 6001);
+        //do Memory.poke(memAddress +256, 3703);
+        //do Memory.poke(memAddress +288, 5461);
+        //do Memory.poke(memAddress +320, 5495);
+        //do Memory.poke(memAddress +352, 3665);
+        //do Memory.poke(memAddress +384, 1105);
+
+        return;
+    }
+
     method void run () 
     {
         var char key;        
@@ -498,6 +520,8 @@ class OKeyboard {
         do Screen.setColor(true);
 
         do drawKeyboard();
+
+        do drawEasterEggs();
 
         while (true)
         {
