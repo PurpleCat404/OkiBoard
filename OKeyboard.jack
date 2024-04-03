@@ -36,9 +36,15 @@ class OKeyboard {
     field Button INSERT; field Button HOME; field Button PAGEUP;
     field Button PAGEDOWN; field Button DELETE; field Button END;
 
-    field Point point;
+    field int i;
+    field int j;
+    field int shift;
+    field int k;
 
-    field int memAddress;
+
+    field Array IsPressed;
+
+    field Point point;
 
     method void drawFrame()
     {
@@ -67,6 +73,102 @@ class OKeyboard {
         do Screen.drawRectangle(point.X(), point.Y(), point.X() + button.Width(), point.Y() + button.Height());
         return;
     }
+
+    function void drawCat(int location) {
+        var int memAddress; 
+        let memAddress = 16384+location;
+        // column 0
+        do Memory.poke(memAddress, 4096);
+        do Memory.poke(memAddress +32, 10240);
+        do Memory.poke(memAddress +64, -15360);
+        do Memory.poke(memAddress +96, 512);
+        do Memory.poke(memAddress +128, 512);
+        do Memory.poke(memAddress +160, 16896);
+        do Memory.poke(memAddress +192, 512);
+        do Memory.poke(memAddress +224, 512);
+        do Memory.poke(memAddress +256, 512);
+        do Memory.poke(memAddress +288, 3072);
+        do Memory.poke(memAddress +320, -2048);
+        do Memory.poke(memAddress +352, 0);
+        do Memory.poke(memAddress +384, 0);
+        // column 1
+        do Memory.poke(memAddress +1, 8);
+        do Memory.poke(memAddress +33, 20);
+        do Memory.poke(memAddress +65, 35);
+        do Memory.poke(memAddress +97, 32);
+        do Memory.poke(memAddress +129, 32);
+        do Memory.poke(memAddress +161, 33);
+        do Memory.poke(memAddress +193, 32);
+        do Memory.poke(memAddress +225, 32);
+        do Memory.poke(memAddress +257, 16);
+        do Memory.poke(memAddress +289, 24);
+        do Memory.poke(memAddress +321, 15);
+        do Memory.poke(memAddress +353, 0);
+        do Memory.poke(memAddress +385, 0);
+        return;
+}
+
+    method void drawOki()
+    {
+        do Sys.wait(300);
+        do Screen.clearScreen();
+        do Sys.wait(300);
+
+        let i = 0;
+        let j = 0;
+        let shift = 0;
+        let k = 19;
+
+        while (i < 250)
+        {
+            while (j < 512)
+            {
+                if ((2 + j) < 512){ do Screen.drawRectangle(2 + j, 3 + i, 2 + j, 5 + i); }
+                if ((4 + j) < 512) {do Screen.drawRectangle(3 + j, 2 + i, 4 + j, 2 + i); }
+                if ((5 + j) < 512) {do Screen.drawRectangle(5 + j, 3 + i, 5 + j, 5 + i); }
+                if ((4 + j) < 512) {do Screen.drawRectangle(3 + j, 6 + i, 4 + j, 6 + i); } // O
+
+
+                if ((7 + j) < 512) {do Screen.drawRectangle(7 + j, 2 + i, 7 + j, 6 + i); }
+                if ((8 + j) < 512) {do Screen.drawRectangle(8 + j, 4 + i, 8 + j, 4 + i); }
+                if ((9 + j) < 512) {do Screen.drawRectangle(9 + j, 3 + i, 9 + j, 3 + i); }
+                if ((10 + j) < 512) {do Screen.drawRectangle(10 + j, 2 + i, 10 + j, 2 + i); } 
+                if ((9 + j) < 512) {do Screen.drawRectangle(9 + j, 5 + i, 9 + j, 5 + i); } 
+                if ((10 + j) < 512) {do Screen.drawRectangle(10 + j, 6 + i, 10 + j, 6 + i); } // K
+
+
+                if ((13 + j) < 512) {do Screen.drawRectangle(12 + j, 2 + i, 13 + j, 2 + i); }
+                if ((13 + j) < 512) {do Screen.drawRectangle(12 + j, 4 + i, 13 + j, 6 + i); } // i
+
+                if (j = shift)
+                {
+                    if ((2 + j - k) > -1) { do Screen.drawRectangle(2 + j - k, 3 + i, 2 + j - k, 5 + i); }
+                    if ((3 + j - k) > -1) { do Screen.drawRectangle(3 + j - k, 2 + i, 4 + j - k, 2 + i); }
+                    if ((5 + j - k) > -1) { do Screen.drawRectangle(5 + j - k, 3 + i, 5 + j - k, 5 + i); }
+                    if ((3 + j - k) > -1) { do Screen.drawRectangle(3 + j - k, 6 + i, 4 + j - k, 6 + i); }
+
+                    if ((7 + j - k) > -1) { do Screen.drawRectangle(7 + j - k, 2 + i, 7 + j - k, 6 + i); }
+                    if ((8 + j - k) > -1) { do Screen.drawRectangle(8 + j - k, 4 + i, 8 + j - k, 4 + i); }
+                    if ((9 + j - k) > -1) { do Screen.drawRectangle(9 + j - k, 3 + i, 9 + j - k, 3 + i); }
+                    if ((10 + j - k) > -1) { do Screen.drawRectangle(10 + j - k, 2 + i, 10 + j - k, 2 + i); }
+                    if ((9 + j - k) > -1) { do Screen.drawRectangle(9 + j - k, 3 + i, 9 + j - k, 5 + i); }
+                    if ((10 + j - k) > -1) { do Screen.drawRectangle(10 + j - k, 2 + i, 10 + j - k, 2 + i); }
+
+                    if ((12 + j - k) > -1) { do Screen.drawRectangle(12 + j - k, 2 + i, 13 + j - k, 2 + i); }
+                    if ((12 + j - k) > -1) { do Screen.drawRectangle(12 + j - k, 4 + i, 13 + j - k, 6 + i); }
+
+                }
+                let j = j + 20;
+            }
+            let shift = shift + 1;
+            if (shift = 18){ let shift = 0; }
+            let j = shift;
+            let i = i + 7;
+        }
+
+        return;
+    }
+
 
 
     constructor OKeyboard new() 
@@ -105,6 +207,19 @@ class OKeyboard {
         var Point print; var Point scrool; var Point pause;
         var Point insert; var Point home; var Point pageUp;
         var Point pageDown; var Point delete; var Point end;
+
+        //73 работающие кнопки
+
+        let i = 0;
+
+        let IsPressed = Array.new(153);
+        while (i < 153)
+        {
+            let IsPressed[i] = false;
+            let i = i + 1;
+        }
+        let i = 0;
+
 
 
         let escPoint = Point.new(59, 63);
@@ -395,6 +510,8 @@ class OKeyboard {
     {
         do drawFrame();
 
+        do drawCat(0);
+
         do drawButton(ESC);
         do drawButton(F1);
         do drawButton(F2);
@@ -493,26 +610,6 @@ class OKeyboard {
         return;
     }
 
-    method void drawEasterEggs()
-    {
-        do Screen.setColor(true);
-        do Screen.drawLine(181, 187, 209, 187);
-
-        //let memAddress = 16384 + 2071;
-        //do Memory.poke(memAddress, 30583);
-        //do Memory.poke(memAddress +32, 5393);
-        //do Memory.poke(memAddress +64, 5489);
-        //do Memory.poke(memAddress +96, 5393);
-        //do Memory.poke(memAddress +128, 6001);
-        //do Memory.poke(memAddress +256, 3703);
-        //do Memory.poke(memAddress +288, 5461);
-        //do Memory.poke(memAddress +320, 5495);
-        //do Memory.poke(memAddress +352, 3665);
-        //do Memory.poke(memAddress +384, 1105);
-
-        return;
-    }
-
     method void run () 
     {
         var char key;        
@@ -521,93 +618,86 @@ class OKeyboard {
 
         do drawKeyboard();
 
-        do drawEasterEggs();
-
         while (true)
         {
             let key = Keyboard.keyPressed();
 
-            if (key = 140) { do coverButton(ESC); }
-            if (key = 141) { do coverButton(F1); }
-            if (key = 142) { do coverButton(F2); }
-            if (key = 143) { do coverButton(F3); }
-            if (key = 144) { do coverButton(F4); }
-            if (key = 145) { do coverButton(F5); }
-            if (key = 146) { do coverButton(F6); }
-            if (key = 147) { do coverButton(F7); }
-            if (key = 148) { do coverButton(F8); }
-            if (key = 149) { do coverButton(F9); }
-            if (key = 150) { do coverButton(F10); }
-            if (key = 151) { do coverButton(F11); }
-            if (key = 152) { do coverButton(F12); }
 
-            if (key = 96){ do coverButton(YO); }
-            if (key = 48){ do coverButton(ZERO); }
-            if (key = 49){ do coverButton(ONE); }
-            if (key = 50){ do coverButton(TWO); }
-            if (key = 51){ do coverButton(THREE); }
-            if (key = 52){ do coverButton(FOUR); }
-            if (key = 53){ do coverButton(FIVE); }
-            if (key = 54){ do coverButton(SIX); }
-            if (key = 55){ do coverButton(SEVEN); }
-            if (key = 56){ do coverButton(EIGHT); }
-            if (key = 57){ do coverButton(NINE); }
-            if (key = 45){ do coverButton(DASH); }
-            if (key = 61){ do coverButton(PLUS); }
+            if (key = 140 & ~(IsPressed[140])) { do coverButton(ESC); let IsPressed[140] = true; let i = i + 1; }
+            if (key = 141 & ~(IsPressed[141])) { do coverButton(F1); let IsPressed[141] = true; let i = i + 1; }
+            if (key = 142 & ~(IsPressed[142])) { do coverButton(F2); let IsPressed[142] = true; let i = i + 1; }
+            if (key = 143 & ~(IsPressed[143])) { do coverButton(F3); let IsPressed[143] = true; let i = i + 1; }
+            if (key = 144 & ~(IsPressed[144])) { do coverButton(F4); let IsPressed[144] = true; let i = i + 1; } 
+            if (key = 145 & ~(IsPressed[145])) { do coverButton(F5); let IsPressed[145] = true; let i = i + 1; } 
+            if (key = 146 & ~(IsPressed[146])) { do coverButton(F6); let IsPressed[146] = true; let i = i + 1; } 
+            if (key = 147 & ~(IsPressed[147])) { do coverButton(F7); let IsPressed[147] = true; let i = i + 1; } 
+            if (key = 148 & ~(IsPressed[148])) { do coverButton(F8); let IsPressed[148] = true; let i = i + 1; }
+            if (key = 149 & ~(IsPressed[149])) { do coverButton(F9); let IsPressed[149] = true; let i = i + 1; }
+            if (key = 150 & ~(IsPressed[150])) { do coverButton(F10); let IsPressed[150] = true; let i = i + 1; }
+            if (key = 151 & ~(IsPressed[151])) { do coverButton(F11); let IsPressed[151] = true; let i = i + 1; }
+            if (key = 152 & ~(IsPressed[152])) { do coverButton(F12); let IsPressed[152] = true; let i = i + 1; }
+            if (key = 96 & ~(IsPressed[96])) { do coverButton(YO); let IsPressed[96] = true; let i = i + 1; }
+            if (key = 48 & ~(IsPressed[48])) { do coverButton(ZERO); let IsPressed[48] = true; let i = i + 1; }
+            if (key = 49 & ~(IsPressed[49])) { do coverButton(ONE); let IsPressed[49] = true; let i = i + 1; }
+            if (key = 50 & ~(IsPressed[50])) { do coverButton(TWO); let IsPressed[50] = true; let i = i + 1; }
+            if (key = 51 & ~(IsPressed[51])) { do coverButton(THREE); let IsPressed[51] = true; let i = i + 1; }
+            if (key = 52 & ~(IsPressed[52])) { do coverButton(FOUR); let IsPressed[52] = true; let i = i + 1; }
+            if (key = 53 & ~(IsPressed[53])) { do coverButton(FIVE); let IsPressed[53] = true; let i = i + 1; }
+            if (key = 54 & ~(IsPressed[54])) { do coverButton(SIX); let IsPressed[54] = true; let i = i + 1; }
+            if (key = 55 & ~(IsPressed[55])) { do coverButton(SEVEN); let IsPressed[55] = true; let i = i + 1; } 
+            if (key = 56 & ~(IsPressed[56])) { do coverButton(EIGHT); let IsPressed[56] = true; let i = i + 1; }
+            if (key = 57 & ~(IsPressed[57])) { do coverButton(NINE); let IsPressed[57] = true; let i = i + 1; }
+            if (key = 45 & ~(IsPressed[45])) { do coverButton(DASH); let IsPressed[45] = true; let i = i + 1; }
+            if (key = 61 & ~(IsPressed[61])) { do coverButton(PLUS); let IsPressed[61] = true; let i = i + 1; }
+            if (key = 81 & ~(IsPressed[81])) { do coverButton(Q); let IsPressed[81] = true; let i = i + 1; }
+            if (key = 87 & ~(IsPressed[87])) { do coverButton(W); let IsPressed[87] = true; let i = i + 1; }
+            if (key = 69 & ~(IsPressed[69])) { do coverButton(E); let IsPressed[69] = true; let i = i + 1; }
+            if (key = 82 & ~(IsPressed[82])) { do coverButton(R); let IsPressed[82] = true; let i = i + 1; }
+            if (key = 84 & ~(IsPressed[84])) { do coverButton(T); let IsPressed[84] = true; let i = i + 1; }
+            if (key = 89 & ~(IsPressed[89])) { do coverButton(Y); let IsPressed[89] = true; let i = i + 1; }
+            if (key = 85 & ~(IsPressed[85])) { do coverButton(U); let IsPressed[85] = true; let i = i + 1; }
+            if (key = 73 & ~(IsPressed[73])) { do coverButton(I); let IsPressed[73] = true; let i = i + 1; }
+            if (key = 79 & ~(IsPressed[79])) { do coverButton(O); let IsPressed[79] = true; let i = i + 1; }
+            if (key = 80 & ~(IsPressed[80])) { do coverButton(P); let IsPressed[80] = true; let i = i + 1; }
+            if (key = 91 & ~(IsPressed[91])) { do coverButton(RGHTSQRBRCKT); let IsPressed[91] = true; let i = i + 1; }
+            if (key = 93 & ~(IsPressed[93])) { do coverButton(LFTSQRBRCKT); let IsPressed[93] = true; let i = i + 1; }
+            if (key = 65 & ~(IsPressed[65])) { do coverButton(A); let IsPressed[65] = true; let i = i + 1; }
+            if (key = 83 & ~(IsPressed[83])) { do coverButton(S); let IsPressed[83] = true; let i = i + 1; }
+            if (key = 68 & ~(IsPressed[68])) { do coverButton(D); let IsPressed[68] = true; let i = i + 1; }
+            if (key = 70 & ~(IsPressed[70])) { do coverButton(F); let IsPressed[70] = true; let i = i + 1; }
+            if (key = 71 & ~(IsPressed[71])) { do coverButton(G); let IsPressed[71] = true; let i = i + 1; }
+            if (key = 72 & ~(IsPressed[72])) { do coverButton(H); let IsPressed[72] = true; let i = i + 1; }
+            if (key = 74 & ~(IsPressed[74])) { do coverButton(J); let IsPressed[74] = true; let i = i + 1; }
+            if (key = 75 & ~(IsPressed[75])) { do coverButton(K); let IsPressed[75] = true; let i = i + 1; }
+            if (key = 76 & ~(IsPressed[76])) { do coverButton(L); let IsPressed[76] = true; let i = i + 1; }
+            if (key = 59 & ~(IsPressed[59])) { do coverButton(JI); let IsPressed[59] = true; let i = i + 1; }
+            if (key = 39 & ~(IsPressed[39])) { do coverButton(QU); let IsPressed[39] = true; let i = i + 1; }
+            if (key = 92 & ~(IsPressed[92])) { do coverButton(BCSLSH); let IsPressed[92] = true; let i = i + 1; }
+            if (key = 90 & ~(IsPressed[90])) { do coverButton(Z); let IsPressed[90] = true; let i = i + 1; }
+            if (key = 88 & ~(IsPressed[88])) { do coverButton(X); let IsPressed[88] = true; let i = i + 1; }
+            if (key = 67 & ~(IsPressed[67])) { do coverButton(C); let IsPressed[67] = true; let i = i + 1; }
+            if (key = 86 & ~(IsPressed[86])) { do coverButton(V); let IsPressed[86] = true; let i = i + 1; }
+            if (key = 66 & ~(IsPressed[66])) { do coverButton(B); let IsPressed[66] = true; let i = i + 1; }
+            if (key = 78 & ~(IsPressed[78])) { do coverButton(N); let IsPressed[78] = true; let i = i + 1; }
+            if (key = 77 & ~(IsPressed[77])) { do coverButton(M); let IsPressed[77] = true; let i = i + 1; }
+            if (key = 44 & ~(IsPressed[44])) { do coverButton(COMMA); let IsPressed[44] = true; let i = i + 1; }
+            if (key = 46 & ~(IsPressed[46])) { do coverButton(DOT); let IsPressed[46] = true; let i = i + 1; }
+            if (key = 47 & ~(IsPressed[47])) { do coverButton(SLSH); let IsPressed[47] = true; let i = i + 1; }
+            if (key = 32 & ~(IsPressed[32])) { do coverButton(SPACE); let IsPressed[32] = true; let i = i + 1; } 
+            if (key = 128 & ~(IsPressed[128])) { do coverButton(ENTER); let IsPressed[128] = true; let i = i + 1; }
+            if (key = 129 & ~(IsPressed[129])) { do coverButton(BACKSPACE); let IsPressed[129] = true; let i = i + 1; }
+            if (key = 130 & ~(IsPressed[130])) { do coverButton(LEFT); let IsPressed[130] = true; let i = i + 1; }
+            if (key = 131 & ~(IsPressed[131])) { do coverButton(UP); let IsPressed[131] = true; let i = i + 1; }
+            if (key = 132 & ~(IsPressed[132])) { do coverButton(RIGHT); let IsPressed[132] = true; let i = i + 1; }
+            if (key = 133 & ~(IsPressed[133])) { do coverButton(DOWN); let IsPressed[133] = true; let i = i + 1; }
+            if (key = 134 & ~(IsPressed[134])) { do coverButton(HOME); let IsPressed[134] = true; let i = i + 1; }
+            if (key = 135 & ~(IsPressed[135])) { do coverButton(END); let IsPressed[135] = true; let i = i + 1; }
+            if (key = 136 & ~(IsPressed[136])) { do coverButton(PAGEUP); let IsPressed[136] = true; let i = i + 1; }
+            if (key = 137 & ~(IsPressed[137])) { do coverButton(PAGEDOWN); let IsPressed[137] = true; let i = i + 1;}
+            if (key = 138 & ~(IsPressed[138])) { do coverButton(INSERT); let IsPressed[138] = true; let i = i + 1; }
+            if (key = 139 & ~(IsPressed[139])) { do coverButton(DELETE); let IsPressed[139] = true; let i = i + 1; }
 
-            if (key = 81){ do coverButton(Q); }
-            if (key = 87){ do coverButton(W); }
-            if (key = 69){ do coverButton(E); }
-            if (key = 82){ do coverButton(R); }
-            if (key = 84){ do coverButton(T); }
-            if (key = 89){ do coverButton(Y); }
-            if (key = 85){ do coverButton(U); }
-            if (key = 73){ do coverButton(I); }
-            if (key = 79){ do coverButton(O); }
-            if (key = 80){ do coverButton(P); }
-            if (key = 91){ do coverButton(RGHTSQRBRCKT); }
-            if (key = 93){ do coverButton(LFTSQRBRCKT); }
-
-            if (key = 65){ do coverButton(A); }
-            if (key = 83){ do coverButton(S); }
-            if (key = 68){ do coverButton(D); }
-            if (key = 70){ do coverButton(F); }
-            if (key = 71){ do coverButton(G); }
-            if (key = 72){ do coverButton(H); }
-            if (key = 74){ do coverButton(J); }
-            if (key = 75){ do coverButton(K); }
-            if (key = 76){ do coverButton(L); }
-            if (key = 59){ do coverButton(JI); }
-            if (key = 39){ do coverButton(QU); }
-            if (key = 92){ do coverButton(BCSLSH); }
-
-            if (key = 90){ do coverButton(Z); }
-            if (key = 88){ do coverButton(X); }
-            if (key = 67){ do coverButton(C); }
-            if (key = 86){ do coverButton(V); }
-            if (key = 66){ do coverButton(B); }
-            if (key = 78){ do coverButton(N); }
-            if (key = 77){ do coverButton(M); }
-            if (key = 44){ do coverButton(COMMA); }
-            if (key = 46){ do coverButton(DOT); }
-            if (key = 47){ do coverButton(SLSH); }
-
-            if (key = 32){ do coverButton(SPACE); } 
-            if (key = 128){ do coverButton(ENTER); } 
-            if (key = 129){ do coverButton(BACKSPACE); }
-
-            if (key = 130){ do coverButton(LEFT); }
-            if (key = 131){ do coverButton(UP); }
-            if (key = 132){ do coverButton(RIGHT); } 
-            if (key = 133){ do coverButton(DOWN); }
-
-            if (key = 134){ do coverButton(HOME); }
-            if (key = 135){ do coverButton(END); }
-            if (key = 136){ do coverButton(PAGEUP); }
-            if (key = 137){ do coverButton(PAGEDOWN); }
-            if (key = 138){ do coverButton(INSERT); }
-            if (key = 139){ do coverButton(DELETE); }
-       
+            if (i = 73) { do drawOki(); }
         }
         return;
     }
